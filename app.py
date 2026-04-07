@@ -26,24 +26,7 @@ index_word = {v: k for k, v in tokenizer.word_index.items()}
 
 # Prediction function
 def predict_next_word(text):
-    if not text.strip():
-        return "Please enter valid input"
-
-    max_sequence_len = model.input_shape[1] + 1
-
-    token_list = tokenizer.texts_to_sequences([text])[0]
-
-    if len(token_list) >= max_sequence_len:
-        token_list = token_list[-(max_sequence_len - 1):]
-
-    token_list = pad_sequences([token_list], maxlen=max_sequence_len - 1, padding='pre')
-
-    predicted = model.predict(token_list, verbose=0)
-
-    predicted_index = np.argmax(predicted, axis=1)[0]
-
-    return index_word.get(predicted_index, "Word not found")
-
+    return "Model temporarily disabled (TensorFlow not installed)"
 
 # UI
 st.title("Next Word Prediction (LSTM)")
