@@ -18,11 +18,14 @@ def load_my_model():
 
 
 # Load tokenizer
-with open(TOKENIZER_PATH, 'rb') as handle:
-    tokenizer = pickle.load(handle)
+try:
+    with open(TOKENIZER_PATH, 'rb') as handle:
+        tokenizer = pickle.load(handle)
+except Exception as e:
+    tokenizer = None
 
 # Reverse mapping
-index_word = {v: k for k, v in tokenizer.word_index.items()}
+index_word = {}
 
 # Prediction function
 def predict_next_word(text):
