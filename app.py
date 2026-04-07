@@ -2,9 +2,7 @@ import streamlit as st
 import numpy as np
 import pickle
 import os
-import tensorflow as tf
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.sequence import pad_sequences
+
 
 # Base directory
 BASE_DIR = os.path.dirname(__file__)
@@ -17,11 +15,7 @@ TOKENIZER_PATH = os.path.join(BASE_DIR, "tokenizer.pickle")
 def load_my_model():
     return load_model(MODEL_PATH, compile=False)
 
-try:
-    model = load_model(MODEL_PATH, compile=False)
-except Exception as e:
-    st.error(f"Model loading failed: {e}")
-    st.stop()
+
 
 # Load tokenizer
 with open(TOKENIZER_PATH, 'rb') as handle:
